@@ -24,15 +24,19 @@ function Sidebar({isOpen, toggle}) {
 
   return (
     <>
-      <SidebarCont isOpen={!isOpen}>
+      <SidebarCont isOpen={isOpen}>
         <SidebarWrap>
-          <SidebarMenu>{listItems}</SidebarMenu>{' '}
+          <SidebarMenu>{listItems}</SidebarMenu>
           <TogWrap>
             <Toggler>
-              {!isOpen ? (
-                <Close size='32px' onClick={toggle} />
+              {isOpen ? (
+                <Close size='32px' onClick={toggle} title='Click to close' />
               ) : (
-                <ArrowToRight size='32px' onClick={toggle} />
+                <ArrowToRight
+                  size='32px'
+                  onClick={toggle}
+                  title='Click to open'
+                />
               )}
             </Toggler>
           </TogWrap>
