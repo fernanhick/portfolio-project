@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {BrowserRouter as Router} from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
+import Sidebar from './components/Sidebar/Sidebar';
+import {useState} from 'react';
+import Topbar from './components/topbar/Topbar';
 function App() {
+  const [isOpen, setIsOpen] = useState(true);
+  const [isTbOpen, setTbIsOpen] = useState(true);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  const toggleTb = () => {
+    setTbIsOpen(!isTbOpen);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <Topbar isTbOpen={isTbOpen} />
+        <Navbar toggle={toggle} isTbOpen={isTbOpen} toggleTb={toggleTb} />
+        <Sidebar isOpen={isOpen} toggle={toggle} />
+      </div>
+    </Router>
   );
 }
 
