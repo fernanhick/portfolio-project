@@ -11,6 +11,7 @@ import {
   TogWrap,
 } from './SidebarElements';
 import {Close} from '@styled-icons/evaicons-solid/Close';
+import {ArrowToRight} from '@styled-icons/boxicons-regular/ArrowToRight';
 
 function Sidebar({isOpen, toggle}) {
   const listItems = ['Profile', 'Dashboard', 'Settings', 'Template'].map(
@@ -20,20 +21,23 @@ function Sidebar({isOpen, toggle}) {
       </SidebarItem>
     )
   );
+
   return (
     <>
-      {' '}
       <SidebarCont isOpen={!isOpen}>
-        {' '}
         <SidebarWrap>
           <SidebarMenu>{listItems}</SidebarMenu>{' '}
           <TogWrap>
             <Toggler>
-              <Close size='32px' onClick={toggle} />
+              {!isOpen ? (
+                <Close size='32px' onClick={toggle} />
+              ) : (
+                <ArrowToRight size='32px' onClick={toggle} />
+              )}
             </Toggler>
           </TogWrap>
-        </SidebarWrap>{' '}
-      </SidebarCont>{' '}
+        </SidebarWrap>
+      </SidebarCont>
     </>
   );
 }
